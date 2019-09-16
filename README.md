@@ -2,7 +2,7 @@
 
 The aim of this small project is to process Gmail inbox messages and search for specific keywords, then save these on a MySQL database.
 
-For the moment this project works exclusively with Gmail. Nevertheless, providers could be easily added.
+For the moment this project works exclusively with Gmail. Nevertheless, providers could be easily added in the `mail.py` file.
 
 ## Configuring the Gmail API
 
