@@ -58,6 +58,7 @@ $ pip install -r requirements.txt
 ```
 The expected output would be something like 
 ```
+(venv) ➜ meli-challenge git:(master) ✗ ./gmail_2_mysql.py 
 Subject --> Has Keywords {'devops', 'DEVOPS', 'DevOps'}
 
 Security Engineer and 39 more Senior Cloud DevOps Engineer jobs in Tempe, AZ, US for you! --> Yes
