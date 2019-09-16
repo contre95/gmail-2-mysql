@@ -31,6 +31,10 @@ To setup the database in order to run the migrations please alter the `alembic.i
 ```
 sqlalchemy.url = mysql://user:password@127.0.0.1/dbname
 ```
+Same applies for the SQLAlchemy ORM on the `database.py` file located on the root directory of the project.
+```
+engine = create_engine('mysql+mysqldb://user:password@localhost:3306/dbname')
+```
 
 ### Run the migrations
 For the migration, we are going to use `Alembic`, since it's known that Alembic installation varies among different operative systems I strongly recommend to run Alembic in a container. To so, `cd` into the `db_migrations` directory and run the following command.
