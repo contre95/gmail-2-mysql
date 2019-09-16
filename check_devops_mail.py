@@ -2,7 +2,9 @@
 #from mail import Gmail, Outlook ...
 from mail import Gmail
 from mensaje import Message
-
+# Parses a RFC 2822 date/time
+from email.utils import parsedate_tz
+from datetime import datetime as dt
 SCOPE = 'https://www.googleapis.com/auth/gmail.readonly'
 KEYWORDS = {'devops','DEVOPS','DevOps'}
 
@@ -16,7 +18,7 @@ def parse_msg(msg):
         if header['name'] == 'Subject':
             parsed_msg['subject'] = header['value']
         if header['name'] == 'Date':
-            parsed_msg['date'] = header['value']
+            parsed_msg['date'] = dt(*parsedate_tz(header['value'])[:6]).strftime('%Y-%m-%d')
         if header['name'] == 'From':
             parsed_msg['from'] = header['value']
         parsed_msg['body'] = msg['snippet']
@@ -32,7 +34,7 @@ def has_keywords(msg, keywords):
         if keyword in keywords:
            print(msg['subject'],'-->',msg['from']) 
            print() 
-           print(msg['body']) 
+           print(msg['date']) 
            print() 
            print() 
            return True
@@ -42,16 +44,21 @@ def has_keywords(msg, keywords):
 def main():
     gmail = Gmail('meli-script-client.json',SCOPE)
     messages = gmail.get_messages()
+#    new_msg = Message('lucascontregmail.com','2019-03-03','Test Subject')
+#    new_msg.save()
 #    return
     for msg in messages:
         parsed_msg = parse_msg(gmail.get_msg(msg['id']))
         if has_keywords(parsed_msg,KEYWORDS):
-            new_msg = Message(parsed_msg['from'],"2019-03-02",parsed_msg['subject'])
-            new_msg.save()
+            try:
+                new_msg = Message(parsed_msg['from'],parsed_msg['date'],parsed_msg['subject'])
+                new_msg.save()
+            except Exception as e:
+                print(e)
             
     
      
      
-    
 
+    
 main()
