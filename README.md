@@ -31,7 +31,7 @@ To setup the database in order to run the migrations please alter the `alembic.i
 ```
 sqlalchemy.url = mysql://user:password@127.0.0.1/dbname
 ```
-Same applies for the SQLAlchemy ORM on the `database.py` file located on the root directory of the project.
+The same applies to the ORM. Edit the `database.py` file located on the root directory of the project.
 ```
 engine = create_engine('mysql+mysqldb://user:password@localhost:3306/dbname')
 ```
