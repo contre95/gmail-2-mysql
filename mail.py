@@ -1,6 +1,9 @@
 from googleapiclient.discovery import build
 from httplib2 import Http
 from oauth2client import file, client, tools
+# Parses a RFC 2822 date/time
+from email.utils import parsedate_tz
+from datetime import datetime as dt
 
 class Gmail:
 
@@ -40,6 +43,22 @@ class Gmail:
         msg = self.service.users().messages().get(userId='me', id=msg_id).execute()
         return msg
 
+    def get_parsed_msg(self, msg_id):
+        '''
+        Recieves a message in the Gmail api format
+        Returns a simplyfied version of the msg as a dictionary
+        '''
+        msg = self.get_msg(msg_id) 
+        parsed_msg = {}
+        for header in msg['payload']['headers']:
+            if header['name'] == 'Subject':
+                parsed_msg['subject'] = header['value']
+            if header['name'] == 'Date':
+                parsed_msg['date'] = dt(*parsedate_tz(header['value'])[:6]).strftime('%Y-%m-%d')
+            if header['name'] == 'From':
+                parsed_msg['from'] = header['value']
+            parsed_msg['body'] = msg['snippet']
+        return parsed_msg
 
 
 
