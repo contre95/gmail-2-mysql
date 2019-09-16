@@ -56,7 +56,20 @@ $ pip install -r requirements.txt
 (venv) $ chmod 775 ./gmail_2_mysql.py
 (venv) $ ./gmail_2_mysql.py
 ```
+The expected output would be something like 
+```
+Subject --> Has Keywords {'devops', 'DEVOPS', 'DevOps'}
 
+Security Engineer and 39 more Senior Cloud DevOps Engineer jobs in Tempe, AZ, US for you! --> Yes
+Re: Want to work at Enterprise? --> No
+Google Security alert --> No
+Lucas, please add me to your LinkedIn network --> Yes
+The Kemtah Group wants you! --> Yes
+Lucas: 30+ new jobs for 'site reliability engineer' in Dallas-Fort Worth Metroplex --> No
+27 Jobs : DevOps Engineer - Remote - Jr./Mid Arizona, United States --> Yes
+See more jobs like OpenText - Software Engineer --> No
+Re: Entrevista - Mercado Libre --> No
+```
 ## Built With
 * [SQLAlchemy](https://www.sqlalchemy.org/) - The ORM used
 * [Google Gmail API](https://developers.google.com/gmail/)
