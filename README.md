@@ -26,6 +26,12 @@ The access is granted by assigning permissions to the service account, using its
 ```
 MariaDB [(none)]> create database <dbname>;
 ```
+## Setup the Database
+To setup the database in order to run the migrations please alter the `alembic.ini` file and set the `sqlalchemy.url` with your db parameters
+```
+sqlalchemy.url = mysql://user:password@127.0.0.1/dbname
+```
+
 ### Run the migrations
 For the migration, we are going to use `Alembic`, since it's known that Alembic installation varies among different operative systems I strongly recommend to run Alembic in a container. To so, `cd` into the `db_migrations` directory and run the following command.
 ```
