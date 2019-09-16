@@ -1,6 +1,6 @@
 # Gmail-2-MySQL 
 
-The aim of this small project is to process Gmail inbox and search for specific keywords, then save these on a MySQL database.
+The aim of this small project is to process Gmail inbox messages and search for specific keywords, then save these on a MySQL database.
 
 For the moment this project works exclusively with Gmail. Nevertheless, providers could be easily added.
 
