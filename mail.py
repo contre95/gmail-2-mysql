@@ -31,7 +31,7 @@ class Gmail:
     def get_messages(self):
         '''
         Takes no parameters
-        Returns a list of dictionarios, each representig a message containing both the message and thread unique id
+        Returns a list of dictionaries, each representing a message containing both the message and thread unique id
         '''
         results = self.service.users().messages().list(userId='me',labelIds = ['INBOX']).execute()
         return results.get('messages', [])
