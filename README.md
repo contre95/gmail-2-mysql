@@ -39,7 +39,7 @@ engine = create_engine('mysql+mysqldb://user:password@localhost:3306/dbname')
 ### Run the migrations
 For the migration, we are going to use `Alembic`, since it's known that Alembic installation varies among different operative systems I strongly recommend to run Alembic in a container. To so, `cd` into the `db_migrations` directory and run the following command.
 ```
-$ docker container run --network=host -v $(pwd):/srv contre95/alembic upgrade head
+$ docker container run --rm --network=host -v $(pwd):/srv contre95/alembic upgrade head
 ```
 
 ### Set up the environment
